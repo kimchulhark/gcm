@@ -4,14 +4,14 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.google.android.gcm.server.*" %>
 <%
-	ArrayList<String> regid = new ArrayList<String>();	//메시지를 보낼 대상들
-	String MESSAGE_ID = String.valueOf(Math.random() % 100 + 1);	//메시지 고유 ID
-	boolean SHOW_ON_IDLE = true;	//기기가 활성화 상태일때 보여줄것인지
-	int LIVE_TIME = 1;	//기기가 비활성화 상태일때 GCM가 메시지를 유효화하는 시간
-	int RETRY = 2;	//메시지 전송실패시 재시도 횟수
+	ArrayList<String> regid = new ArrayList<String>();	
+	String MESSAGE_ID = String.valueOf(Math.random() % 100 + 1);	
+	boolean SHOW_ON_IDLE = true;	
+	int LIVE_TIME = 1;
+	int RETRY = 2;
 
-	String simpleApiKey = "AIzaSyDTM3E2vZJmLukMm3umSQLl9hm0Loe6XnE";	//가이드 1때 받은 키
-	String gcmURL = "https://android.googleapis.com/gcm/send";		//푸쉬를 요청할 구글 주소
+	String simpleApiKey = "AIzaSyDTM3E2vZJmLukMm3umSQLl9hm0Loe6XnE";
+	String gcmURL = "https://android.googleapis.com/gcm/send";	
 	Connection con = null;
 	String DB_URL = "jdbc:mysql://211.174.146.92:3306/testgcm?characterEncoding=utf8";
 	String DB_USERID = "gcm12";
@@ -24,7 +24,7 @@
 		ResultSet rs = null;
 		String sql = "select * from t_gcminfo where id='"+id+"'";
 		rs = stmt.executeQuery(sql);
-		//모든 등록ID를 리스트로 묶음
+	
 		while(rs.next()){
 			System.out.println(rs.getString("regId"));
 			regid.add(rs.getString("regId"));
